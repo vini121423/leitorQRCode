@@ -22,7 +22,7 @@ export class Tab1Page {
     this.qrScanner.prepare()
     .then((status: QRScannerStatus) => {
      if (status.authorized) {
-		 this.content = document.getElementByTagName('ion-content')[0] as HTMLElement;
+		 this.content = document.getElementsByTagName('ion-content')[0] as HTMLElement;
 		 this.imgLogo = document.getElementById('logo') as HTMLElement;
 		 this.content.style.opacity = "0";
 		 this.imgLogo.style.opacity = "0";
@@ -40,7 +40,7 @@ export class Tab1Page {
          this.qrScanner.hide();
          this.leitorQRCode.unsubscribe(); // Stop Scanning
 		 
-		 this.presentAlert('LEITURA:,' this.leitura);
+		 this.presentAlert('LEITURA:', this.leitura);
        });
 
      } else if (status.denied) {
@@ -54,7 +54,7 @@ export class Tab1Page {
    
     async presentAlert(title:string,msg:string) {
     const alert = await this.alertController.create({
-      header: titulo,
+      header: title,
       message: msg,
       buttons: ['OK']
     });
