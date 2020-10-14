@@ -10,17 +10,32 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { QRScanner } from '@ionic-native/qr-scanner/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+  BrowserModule,
+  IonicModule.forRoot(),
+  AppRoutingModule,
+  AngularFireDatabaseModule,
+  AngularFirestoreModule,
+  AngularFireModule.initializeApp(environment.firebaseConfig)
+  ],
   providers: [
     StatusBar,
     SplashScreen,
-	QRScanner,
+    QRScanner,
+	ScreenOrientation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

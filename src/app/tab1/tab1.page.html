@@ -8,14 +8,20 @@
 
 <ion-content [fullscreen]="true" color="medium">
 </ion-content>
- <div class="screen">
-    <div class="scan">
-	   <img id="logo" src="assets/icon.png">
-	</div>
+<div class="screen">
+  <div class="scan">
+    <img id="logo" src="assets/icon.png">
   </div>
+</div>
 
- <ion-footer  class="ion-no-border">
-    <ion-toolbar color="dark">
-	  <ion-button color="danger" expand="block" (click)="lerQrCode()">Ler QRCode</ion-button>
-	</ion-toolbar>
- </ion-footer>
+<ion-footer class="ion-no-border" id="footer">
+  <ion-item *ngIf="link">
+    <ion-label [href]="leitura" target="_blank">{{leitura}}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="leitura">
+    <ion-input [(ngModel)]="leitura"></ion-input>
+  </ion-item>
+  <ion-toolbar color="dark">
+    <ion-button color="danger" expand="block" (click)="lerQrCode()">Ler QRCode</ion-button>
+  </ion-toolbar>
+</ion-footer>
